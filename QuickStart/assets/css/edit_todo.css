@@ -1,0 +1,188 @@
+ :root {
+            --warna-coklat: #7f6f67;
+            --warna-krem: #e8e0da;
+            --warna-coklat-muda: #a59187;
+            --warna-coklat-tua: #6a5d56;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--warna-krem) 0%, #f5ebe6 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: 'Poppins', cursive, sans-serif;
+        }
+
+        .card {
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(127, 111, 103, 0.2);
+            overflow: hidden;
+            border: 3px dashed var(--warna-coklat);
+            animation: bounce 2s infinite alternate;
+        }
+
+        .card-header {
+            background: linear-gradient(to right, var(--warna-coklat) 0%, var(--warna-coklat-tua) 100%);
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            position: relative;
+            border-bottom: 3px dotted white;
+        }
+
+        .card-header:before {
+            content: "✏️";
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+
+        .card-body {
+            background-color: rgba(232, 224, 218, 0.3);
+            padding: 25px;
+        }
+
+        .form-label {
+            color: var(--warna-coklat-tua);
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .form-control, .form-select {
+            border: 2px solid var(--warna-coklat-muda);
+            border-radius: 12px;
+            padding: 10px 15px;
+            background-color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--warna-coklat);
+            box-shadow: 0 0 0 0.25rem rgba(127, 111, 103, 0.25);
+            background-color: white;
+        }
+
+        .btn-submit {
+            background: linear-gradient(to bottom, var(--warna-coklat-muda) 0%, var(--warna-coklat) 100%);
+            border: none;
+            font-weight: bold;
+            color: white;
+            border-radius: 50px;
+            padding: 10px 25px;
+            box-shadow: 0 4px 8px rgba(127, 111, 103, 0.3);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-submit:after {
+            content: "✅";
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(127, 111, 103, 0.4);
+        }
+
+        .btn-submit:hover:after {
+            right: 15px;
+            opacity: 1;
+        }
+
+        .btn-cancel {
+            background: linear-gradient(to bottom, #e2e2e2 0%, #cccccc 100%);
+            border: none;
+            font-weight: bold;
+            color: #555;
+            border-radius: 50px;
+            padding: 10px 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-cancel:after {
+            content: "❌";
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .btn-cancel:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            color: #333;
+        }
+
+        .btn-cancel:hover:after {
+            right: 15px;
+            opacity: 1;
+        }
+
+        .d-flex.justify-content-between {
+            margin-top: 25px;
+        }
+
+        /* Animasi */
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Dekorasi lucu */
+        .decoration {
+            position: absolute;
+            z-index: -1;
+        }
+
+        .decoration-1 {
+            top: 10%;
+            left: 5%;
+            font-size: 3rem;
+            opacity: 0.1;
+            transform: rotate(-15deg);
+        }
+
+        .decoration-2 {
+            bottom: 15%;
+            right: 5%;
+            font-size: 3rem;
+            opacity: 0.1;
+            transform: rotate(15deg);
+        }
+
+        /* Responsif */
+        @media (max-width: 576px) {
+            .card {
+                width: 100% !important;
+            }
+
+            .d-flex.justify-content-between {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .btn-submit, .btn-cancel {
+                width: 100%;
+            }
+        }

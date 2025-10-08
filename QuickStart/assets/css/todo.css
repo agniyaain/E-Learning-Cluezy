@@ -1,0 +1,214 @@
+
+        @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css');
+        
+        .todo-list * {
+            box-sizing: border-box;
+            font-family: 'Poppins', cursive;
+        }
+        
+        .todo-list {
+            background: linear-gradient(135deg, #fdf7f4, #f5ede8);
+            font-family: 'Poppins', cursive;
+            min-height: 100vh;
+            padding-bottom: 50px;
+            background-image: 
+                radial-gradient(#e8e0da 15%, transparent 15%), 
+                radial-gradient(#e8e0da 15%, transparent 15%);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+        
+        .todo-list h2 {
+            font-weight: bold;
+            color: #7f6f67;
+            text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.5);
+            position: relative;
+            display: inline-block;
+            padding: 0 10px;
+        }
+        
+        .todo-list h2::after {
+            content: "✨";
+            position: absolute;
+            top: -15px;
+            right: -25px;
+            font-size: 30px;
+        }
+        
+        .todo-list .todo-card {
+            background: #fff9f5;
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(127, 111, 103, 0.15);
+            border: 3px dashed #7f6f67;
+            margin-top: 30px;
+            position: relative;
+            overflow: visible !important;
+        }
+        
+        .todo-list .todo-card::before {
+            content: "📝";
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            font-size: 40px;
+            transform: rotate(15deg);
+            z-index: 0;
+        }
+        
+        .todo-list select,
+        input[type="text"] {
+            border-radius: 15px;
+            border: 2px solid #d6c9c1;
+            padding: 12px 15px;
+            background: #f9f5f2;
+            transition: all 0.3s ease;
+        }
+        
+        .todo-list select:focus,
+        input[type="text"]:focus {
+            border-color: #7f6f67;
+            box-shadow: 0 0 0 0.25rem rgba(127, 111, 103, 0.25);
+            background: white;
+        }
+        
+        .todo-list .btn-primary {
+            background: linear-gradient(45deg, #7f6f67, #a7948b);
+            border: none;
+            border-radius: 15px;
+            padding: 12px 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(127, 111, 103, 0.3);
+        }
+        
+        .todo-list .btn-primary:hover {
+            background: linear-gradient(45deg, #6a5d56, #8c7c74);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(127, 111, 103, 0.4);
+        }
+        
+        .todo-list table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 25px;
+            border-radius: 15px;
+            overflow: visible;
+        }
+        
+        .todo-list table th {
+            background: #a7948b;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            position: relative;
+        }
+        
+        .todo-list table th:first-child {
+            border-top-left-radius: 15px;
+        }
+        
+        .todo-list table th:last-child {
+            border-top-right-radius: 15px;
+        }
+        
+        .todo-list table th::after {
+            content: "▼";
+            margin-left: 8px;
+            font-size: 14px;
+        }
+        
+        .todo-list table td {
+            padding: 15px;
+            border-bottom: 2px solid #f3ede8;
+            background: #f9f5f2;
+            transition: all 0.3s ease;
+        }
+        
+        .todo-list table tr:last-child td:first-child {
+            border-bottom-left-radius: 15px;
+        }
+        
+        .todo-list table tr:last-child td:last-child {
+            border-bottom-right-radius: 15px;
+        }
+        
+        .todo-list table tr:hover td {
+            background: #f3ede8;
+            transform: scale(1.01);
+        }
+        
+        .todo-list .table-danger {
+            background: #ffe9e9 !important;
+            color: #c62828;
+            font-weight: bold;
+        }
+        
+        .todo-list .table-warning {
+            background: #fff3cd !important;
+            color: #856404;
+            font-weight: bold;
+        }
+        
+        .todo-list .table-success {
+            background: #d4edda !important;
+            color: #155724;
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .todo-list .table-success::after {
+            content: "✔";
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+        }
+        
+        .todo-list.dropdown-toggle::after {
+            display: none;
+        }
+        
+        .todo-list .dropdown-menu {
+            position: absolute;
+            transform: translate3d(0,0,0 );
+            will-change: transform;
+            border-radius: 15px;
+            border: 2px solid #d6c9c1;
+            z-index: 1050;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .todo-list .dropdown-item {
+            padding: 10px 15px;
+            transition: all 0.2s ease;
+        }
+        
+        .todo-list .dropdown-item:hover {
+            background: #f3ede8;
+            padding-left: 20px;
+        }
+        
+        .todo-list .dropdown-item.text-danger:hover {
+            background: #ffe9e9;
+        }
+        
+        @media (max-width: 768px) {
+            .todo-list .todo-card {
+                padding: 20px;
+            }
+            
+            .todo-list table th,
+            table td {
+                padding: 10px;
+            }
+            
+            .todo-list .btn-primary {
+                width: 100%;
+            }
+        }
+        

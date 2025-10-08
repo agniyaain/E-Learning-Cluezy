@@ -1,0 +1,329 @@
+:root {
+  --warna-coklat-tua: #7f6f67;
+  --warna-coklat: #a89a93;
+  --warna-coklat-muda: #d1c8c3;
+  --warna-krem: #f5f1ee;
+  --warna-putih: #faf9f8;
+  --warna-aksen: #ff9f66;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.timer {
+  font-family: "Poppins", cursive, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(
+    135deg,
+    var(--warna-krem) 0%,
+    var(--warna-coklat-muda) 100%
+  );
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center;
+            justify-content: center; */
+  padding: 20px;
+  color: var(--warna-coklat-tua);
+}
+
+.timer .container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer .card {
+  background: var(--warna-putih);
+  border-radius: 28px;
+  box-shadow: 0 15px 35px rgba(127, 111, 103, 0.15),
+    0 5px 15px rgba(127, 111, 103, 0.1);
+  padding: 25px;
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid var(--warna-coklat-muda);
+  transition: all 0.3s ease;
+}
+
+.timer .card:hover {
+  box-shadow: 0 20px 40px rgba(127, 111, 103, 0.2),
+    0 8px 20px rgba(127, 111, 103, 0.15);
+}
+
+.timer .timer-container {
+  text-align: center;
+}
+
+.timer #modeLabel {
+  background: linear-gradient(
+    to right,
+    var(--warna-coklat-tua),
+    var(--warna-coklat)
+  );
+  border-radius: 16px;
+  padding: 12px 25px;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: var(--warna-putih);
+  user-select: none;
+  box-shadow: 0 5px 15px rgba(127, 111, 103, 0.2);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.timer #modeLabel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+}
+
+.timer .timer-active #modeLabel::after {
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.timer #timeDisplayLarge {
+  background: linear-gradient(
+    135deg,
+    var(--warna-coklat) 0%,
+    var(--warna-coklat-tua) 100%
+  );
+  border-radius: 20px;
+  font-size: 90px;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 25px;
+  padding: 25px 0;
+  color: var(--warna-putih);
+  box-shadow: inset 0 3px 6px rgba(255, 255, 255, 0.3),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(127, 111, 103, 0.25);
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+}
+
+.timer .timer-active #timeDisplayLarge {
+  box-shadow: inset 0 3px 6px rgba(255, 255, 255, 0.3),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(127, 111, 103, 0.25),
+    0 0 20px var(--warna-aksen);
+}
+
+.timer .controls-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.timer .control-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  background: var(--warna-putih);
+  color: var(--warna-coklat-tua);
+  box-shadow: 0 5px 15px rgba(127, 111, 103, 0.2),
+    0 3px 8px rgba(127, 111, 103, 0.1);
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer .control-button:hover {
+  background: var(--warna-coklat-tua);
+  color: var(--warna-putih);
+  box-shadow: 0 8px 20px rgba(127, 111, 103, 0.3),
+    0 5px 12px rgba(127, 111, 103, 0.2);
+  transform: translateY(-3px);
+}
+
+.timer .control-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 8px rgba(127, 111, 103, 0.2),
+    0 2px 5px rgba(127, 111, 103, 0.15);
+}
+
+.timer .length-controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 16px;
+}
+
+.timer .length-control {
+  background: var(--warna-putih);
+  border-radius: 20px;
+  padding: 20px 15px;
+  box-shadow: 0 5px 15px rgba(127, 111, 103, 0.1),
+    0 3px 8px rgba(127, 111, 103, 0.06);
+  flex: 1;
+  text-align: center;
+  color: var(--warna-coklat-tua);
+  transition: all 0.3s ease;
+}
+
+.timer .length-control:hover {
+  box-shadow: 0 8px 20px rgba(127, 111, 103, 0.15),
+    0 5px 12px rgba(127, 111, 103, 0.09);
+  transform: translateY(-3px);
+}
+
+.timer .length-title {
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+  font-size: 16px;
+}
+
+.timer .length-value {
+  font-weight: 900;
+  font-size: 36px;
+  margin-bottom: 15px;
+  color: var(--warna-coklat-tua);
+}
+
+.timer .length-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.timer .length-button {
+  background: linear-gradient(
+    to bottom,
+    var(--warna-coklat),
+    var(--warna-coklat-tua)
+  );
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--warna-putih);
+  font-weight: 700;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 5px 12px rgba(127, 111, 103, 0.3),
+    0 3px 8px rgba(127, 111, 103, 0.2);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer .length-button:hover {
+  background: linear-gradient(
+    to bottom,
+    var(--warna-coklat-tua),
+    var(--warna-coklat-tua)
+  );
+  box-shadow: 0 8px 16px rgba(127, 111, 103, 0.35),
+    0 5px 10px rgba(127, 111, 103, 0.25);
+  transform: translateY(-2px);
+}
+
+.timer .length-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 8px rgba(127, 111, 103, 0.3),
+    0 2px 5px rgba(127, 111, 103, 0.2);
+}
+
+.timer .timer-active .length-button,
+.timer .timer-active .length-control {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Progress indicator */
+.timer .progress-container {
+  height: 6px;
+  width: 100%;
+  background-color: var(--warna-coklat-muda);
+  border-radius: 3px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.timer .progress-bar {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    var(--warna-coklat),
+    var(--warna-coklat-tua)
+  );
+  border-radius: 3px;
+  transition: width 1s linear;
+}
+
+/* Notification style */
+.timer .notification {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--warna-coklat-tua);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.timer .notification.show {
+  opacity: 1;
+}
+
+/* ✅ Responsif untuk length controls */
+@media (max-width: 768px) {
+  .timer .length-controls {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .timer .length-control {
+    flex: 1 1 45%; /* 2 kartu per baris */
+    min-width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .timer .length-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .timer .length-control {
+    flex: 1 1 100%;
+    min-width: unset;
+  }
+}

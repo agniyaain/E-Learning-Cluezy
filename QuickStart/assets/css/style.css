@@ -1,0 +1,203 @@
+/* CSS Lucu untuk Halaman Tambah Note */
+body {
+    font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    background-color: #f9f5f1;
+    background-image: url('tg.jpg');
+    background-size: cover;
+    margin: 0;
+    color: #5a4d47;
+}
+
+input, button, textarea {
+    padding: 10px;
+    border-radius: 12px !important;
+    border: 2px dashed #a8978d !important;
+    font-family: "Comic Sans MS", cursive;
+}
+
+input:focus, textarea:focus {
+    border: 2px solid #7f6f67 !important;
+    outline: none;
+    box-shadow: 0 0 8px rgba(127, 111, 103, 0.4);
+}
+
+button {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tambah {
+    background-color: #7f6f67;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    float: right;
+    margin: 15px 0px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tambah:hover {
+    background-color: #6c5e57;
+    transform: translateY(-3px);
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #fefcf9;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px dotted #d3c8bf;
+}
+
+tr:hover {
+    background-color: #f5f0eb;
+}
+
+input[type=text], input[type=varchar]{
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px dashed #c4b6ac;
+    border-radius: 12px;
+    background-color: #f9f5f1;
+    font-size: 14px;
+}
+
+.submit {
+    background-color: #7f6f67;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.submit:hover {
+    background-color: #6c5e57;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.batal {
+    background-color: #e8e0da;
+    color: #5a4d47;
+    border: none;
+    padding: 12px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.batal:hover {
+    background-color: #d6cbc2;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px dashed #c4b6ac;
+    border-radius: 12px;
+    background-color: #f9f5f1;
+    resize: none;
+    font-size: 14px;
+}
+
+.container {
+    background-color: #fefcf9;
+    border: 2px dotted #c4b6ac;
+    padding: 20px;
+    width: 900px;
+    margin: 20px auto;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.container h1 {
+    color: #7f6f67;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.container hr {
+    border: 1px dotted #d3c8bf;
+    margin-bottom: 25px;
+}
+
+/* Styling untuk file input */
+input[type="file"] {
+    padding: 8px;
+    background-color: #f9f5f1;
+    border: 2px dashed #c4b6ac;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+input[type="file"]::file-selector-button {
+    background-color: #e8e0da;
+    color: #5a4d47;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-family: "Comic Sans MS", cursive;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: #d6cbc2;
+}
+
+/* Animasi lucu */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+}
+
+.container:hover {
+    animation: bounce 1s;
+}
+
+/* Responsif */
+@media (max-width: 950px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+}
