@@ -1,0 +1,114 @@
+body {
+    background-color: #f9f5f1;
+    font-family: 'Poppins', cursive, sans-serif;
+    color: #5a4d47;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    max-width: 800px;
+}
+
+.container.text-center.py-5 {
+    border-radius: 20px;
+    padding: 40px;
+    background-color: #fefcf9;
+    box-shadow: 0 10px 25px rgba(127, 111, 103, 0.15);
+    border: 3px dashed #c4b6ac;
+    position: relative;
+    overflow: hidden;
+    animation: bounceIn 0.6s ease forwards;
+}
+
+.container.text-center.py-5::before {
+    content: "✏️";
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 60px;
+    height: 60px;
+    background-color: #7f6f67;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    transform: rotate(15deg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.container.text-center.py-5::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 15px;
+    background-color: #e8e0da;
+    border-radius: 0 0 10px 10px;
+    z-index: -1;
+}
+
+h3 {
+    color: #7f6f67;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px dotted #d3c8bf;
+    padding-bottom: 10px;
+}
+
+.text-muted {
+    color: #a8978d !important;
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+.btn.btn-success.mt-3 {
+    background-color: #7f6f67 !important;
+    border: none;
+    font-weight: bold;
+    padding: 12px 50px;
+    border-radius: 30px;
+    transition: all 0.3s;
+    font-family: 'Comic Sans MS', cursive;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn.btn-success.mt-3::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.4s;
+    z-index: -1;
+}
+
+.btn.btn-success.mt-3:hover {
+    background-color: #6c5e57 !important;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn.btn-success.mt-3:hover::before {
+    left: 100%;
+}
+
+.btn.btn-success.mt-3:active {
+    transform: translateY(1px);
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.9); opacity: 0; }
+    60% { transform: scale(1.03); }
+    100% { transform: scale(1); opacity: 1; }
+}

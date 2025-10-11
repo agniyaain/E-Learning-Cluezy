@@ -41,12 +41,14 @@
             <h3 class="fw-bold text-center"><?php echo($quiz['judul']) ?></h3>
             <p class="mb-1"><?php echo($quiz['deskripsi']) ?></p>
 
-            <small class="text-muted">Total Questions:                                                                                                                                                                                                                                                                               <?php echo $soal_count ?></small>
+            <small class="text-muted">Total Questions:                                                                                                                                                                                                                                                                                                                                                                                           <?php echo $soal_count ?></small>
         </div>
 
         <div class="text-center mt-4">
-            <a href="mulai_quiz.php?id_quiz=<?php echo $quiz['id_quiz'] ?>" class="btn btn-success">Start</a>
-        </div>
+    <a href="mulai_quiz.php?id_quiz=<?php echo $quiz['id_quiz'] ?>" class="btn btn-success">Start (Solo)</a>
+    <a href="start_session.php?id_quiz=<?php echo $quiz['id_quiz'] ?>" class="btn btn-primary ms-2">Start with Code</a>
+</div>
+
 
         <?php if ($quiz['id_user'] == $_SESSION['id_user']) {?>
             <div class="text-center mt-2">

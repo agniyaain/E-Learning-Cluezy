@@ -20,7 +20,12 @@ include "navigasi.php"; ?>
         <form class="d-flex justify-content-center align-items-center gap-2 mb-4" method="get">
             <input type="text" name="search" class="form-control search-bar" placeholder="Search quiz" value="<?php echo($search) ?>">
             <a href="tambah_quiz.php" class="btn btn-primary">Make Quiz</a>
+
         </form>
+        <div class="text-center mb-3">
+    <a href="join_session.php" class="btn btn-success">Join via Code</a>
+</div>
+
 
         <!-- Quiz Grid -->
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 quiz-grid">
