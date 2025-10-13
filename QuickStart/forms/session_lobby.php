@@ -16,7 +16,8 @@
 <head>
     <title>Session Lobby</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-c</head>
+    <link rel="stylesheet" href="../assets/css/det_quiz.css">
+</head>
 <body class="bg-light">
 <div class="container text-center py-5">
     <h3 class="fw-bold"><?php echo $quiz['judul'] ?></h3>

@@ -9,8 +9,7 @@
     $result = mysqli_query($koneksi, $query);
     $quiz   = mysqli_fetch_assoc($result);
 ?>
-<?php include "header.php";
-include "navigasi.php"; ?>
+<?php include "header.php"; ?>
     <!-- Navbar -->
     <div class="quiz">
     <div class="container py-4">

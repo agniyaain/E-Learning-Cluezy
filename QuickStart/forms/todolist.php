@@ -12,7 +12,6 @@
     $sql     = "SELECT * FROM to_do_list WHERE id_user='$id_user'";
     $result  = mysqli_query($koneksi, $sql);
     include "header.php";
-    include "navigasi.php";
 ?>
 <div class="todo-list">
 <div class="container mt-5">
