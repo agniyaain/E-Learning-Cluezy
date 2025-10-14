@@ -1,5 +1,6 @@
 <?php
     include "koneksi.php";
+    include "sidebar.php";
     session_start();
     //HANDLE AJAX REQUEST
     if (isset($_POST['ajax']) && $_POST['ajax'] == "1") {
@@ -39,7 +40,7 @@
 
         echo "</table>";
         exit; //menghentikan eksekusi untuk AJAX
-    };
+    }
 ?>
 
     <!DOCTYPE html>
@@ -53,7 +54,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-         <style>
+    <style>
         .sidebar {
             min-height: 100vh;
             background: linear-gradient(180deg, #2c3e50 0%, #3498db 100%);
@@ -121,7 +122,7 @@
     </style>
     </head>
     <body>
-        <?php include "sidebar.php"?>
+    <main class="content" style="margin-left: 16.666667%; padding: 2rem;"> <!-- 16.66% = col-2 dari 12 -->
         <div class="container" >
             <h1>Data User</h1>
             <hr>
@@ -147,7 +148,7 @@
                     echo "<td> <a href ='edit_userdas.php?id_user=" . $dt['id_user'] . "'>EDIT | </a>";
                 ?>
                 <a href="delete_userdas.php?id_user=<?php echo $dt['id_user']; ?>"
-                    onclick="return confirm('Apa anda yakin menghapus user                                                                                                                                                     <?php echo $dt['username']; ?>?');">
+                    onclick="return confirm('Apa anda yakin menghapus user                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     <?php echo $dt['username']; ?>?');">
                     DELETE
                 </a>
                 <?php
@@ -157,6 +158,7 @@
                 ?>
             </table>
         </div>
+    </main>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script>
             $(document).ready(function() {
