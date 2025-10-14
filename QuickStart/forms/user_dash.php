@@ -31,8 +31,8 @@
             echo "<td>" . $dt['username'] . "</td>";
             echo "<td>", $dt['pass'] . "</td>";
             echo "<td>
-                <a href ='edit_userdas.php?id=" . $dt['id_user'] . "'>EDIT | </a>
-                <a href='delete_userdas.php.php?id=" . $dt['id_user'] . "'
+                <a href ='edit_userdas.php?id_user=" . $dt['id_user'] . "'>EDIT | </a>
+                <a href='delete_userdas.php.php?id_user=" . $dt['id_user'] . "'
                     onclick=\"return confirm('Apa anda yakin menghapus user " . $dt['username'] . "?')\">DELETE</a>
                     </td>";
             echo "<tr>";
@@ -148,7 +148,7 @@
                     echo "<td> <a href ='edit_userdas.php?id_user=" . $dt['id_user'] . "'>EDIT | </a>";
                 ?>
                 <a href="delete_userdas.php?id_user=<?php echo $dt['id_user']; ?>"
-                    onclick="return confirm('Apa anda yakin menghapus user                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     <?php echo $dt['username']; ?>?');">
+                    onclick="return confirm('Apa anda yakin menghapus user                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         <?php echo $dt['username']; ?>?');">
                     DELETE
                 </a>
                 <?php

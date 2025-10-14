@@ -38,7 +38,7 @@
         <a class="nav-link text-white active" href="dashboard_admin.php"><i class="bi bi-speedometer2"></i> Dashboard</a>
         <a class="nav-link text-white" href="user_dash.php"><i class="bi bi-people"></i> Users</a>
         <a class="nav-link text-white" href="note_dash.php"><i class="bi bi-file-earmark-text"></i> Note</a>
-        <a class="nav-link text-white" href="categories.php"><i class="bi bi-grid"></i> Categories</a>
+        <a class="nav-link text-white" href="quiz_dash.php"><i class="bi bi-grid"></i> Quiz</a>
         <a class="nav-link text-white" href="comments.php"><i class="bi bi-chat-left-text"></i> Comments</a>
         <div class="dropdown">
             <a class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="bi bi-gear"></i> Settings</a>

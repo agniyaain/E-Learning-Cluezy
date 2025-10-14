@@ -11,7 +11,7 @@ if ($result) {
     </script>';
 } else {
     echo '<script>
-        window.location.href="todolist.php";
+        window.location.href="user_dash.php";
         alert("Hapus user gagal");
     </script>';
 }
