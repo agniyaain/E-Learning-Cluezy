@@ -11,10 +11,28 @@
         $session = mysqli_fetch_assoc($res);
 
         if ($session) {
+
+            if ($session['status'] != 'waiting') {
+                $error = "Session sudah dimulai atau selesai";
+            }
+            $id_user = $_SESSION['id_user'];
+
+            $check_join = mysqli_query($koneksi, "SELECT * FROM user_session
+        WHERE id_session='{$session['id_session']}' AND id_user = '$id_user'");
+
+            if (mysqli_num_rows($check_join) == 0) {
+                mysqli_query($koneksi, "INSERT INTO user_session (id_session, id_user, nilai) VALUES ('{$session['id_session']}', '$id_user', NULL)");
+            }
+
             header("Location: session_quiz.php?id_session=" . $session['id_session']);
             exit;
         } else {
-            $error = "Kode salah atau sesi sudah dimulai.";
+            if ($session) {
+                header("Location: session_quiz.php?id_session=" . $session['id_session']);
+                exit;
+            } else {
+                $error = "Kode salah atau sesi sudah dimulai.";
+            }
         }
     }
 ?>

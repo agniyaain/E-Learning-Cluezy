@@ -140,16 +140,31 @@
                 $query = "SELECT * FROM catatan";
                 $data  = mysqli_query($koneksi, $query);
                 while ($dt = mysqli_fetch_assoc($data)) {
+
+                    $files   = ! empty($dt['isi']) ? explode(",", $dt['isi']) : [];
+                    $preview = '';
+                    if (! empty($files)) {
+                        $firstFile = $files[0];
+                        $ext       = strtolower(pathinfo($firstFile, PATHINFO_EXTENSION));
+                        if (in_array($ext, ['jpg', 'jpeg', 'png', 'gif'])) {
+                            $preview = "<img src='../assets/uploads/" . $firstFile . "' alt='Preview'>";
+                        } else {
+                            $preview = "<div class='placeholder'><i class='fas fa-file'></i>File</div>";
+                        }
+                    } else {
+                        $preview = "<div class='placeholder'><i class='fas fa-sticky-note'></i>No File</div>";
+                    }
+
                     echo "<tr>";
                     echo "<td>" . $dt['id_note'] . "</td>";
-                    echo "<td>" . $dt['isi'] . "</td>";
+                    echo "<td>" . $preview . "</td>";
                     // echo "<td>" . $dt['id_user'] . "</td>";
                     echo "<td>" . $dt['judul'] . "</td>";
                     echo "<td>", $dt['deskripsi'] . "</td>";
                     echo "<td> <a href ='edit_notedas.php?id_note=" . $dt['id_note'] . "'>EDIT | </a>";
                 ?>
                 <a href="delete_notedas.php?id_note=<?php echo $dt['id_note']; ?>"
-                    onclick="return confirm('Apa anda yakin menghapus note                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   <?php echo $dt['judul']; ?>?');">
+                    onclick="return confirm('Apa anda yakin menghapus note<?php echo $dt['judul']; ?>?');">
                     DELETE
                 </a>
                 <?php

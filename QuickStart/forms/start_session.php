@@ -12,6 +12,7 @@ if (! isset($_GET['id_quiz'])) {
 }
 
 $id_quiz = $_GET['id_quiz'];
+$id_user = $_SESSION['id_user'];
 
 function generateCode($length = 6)
 {
@@ -30,7 +31,7 @@ while (mysqli_num_rows($check) > 0) {
     $check = mysqli_query($koneksi, "SELECT * FROM quiz_session WHERE kode_session='$kode'");
 }
 
-mysqli_query($koneksi, "INSERT INTO quiz_session (id_quiz, kode_session) VALUES ('$id_quiz', '$kode')");
+mysqli_query($koneksi, "INSERT INTO quiz_session (id_quiz, kode_session, id_user) VALUES ('$id_quiz', '$kode', '$id_user')");
 $id_session = mysqli_insert_id($koneksi);
 
 header("Location: session_lobby.php?id_session=$id_session");

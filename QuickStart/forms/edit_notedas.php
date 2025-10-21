@@ -35,13 +35,9 @@
                 <table>
 
                     <tr>
-                <td width="150px">Isi</td>
-                <td>
-                    <input type="hidden" name="id_note" value="<?php echo $data['id_note']; ?>">
-                    <input type="text" name="isi" value="<?php echo $data['isi']; ?>">
-                </td>
             </tr>
             <tr>
+                <input type="hidden" name="id_note" value="<?php echo $data['id_note']; ?>">
                 <td>Judul</td>
                 <td><input type="text" name="judul" value="<?php echo $data['judul']; ?>"></td>
             </tr>
@@ -49,6 +45,27 @@
                 <td>Deskripsi</td>
                 <td><input type="text" name="deskripsi" value="<?php echo $data['deskripsi']; ?>"></td>
             </tr>
+
+<tr>
+                <td>File Saat Ini</td>
+                <td>
+                    <?php
+                        if (! empty($data['isi'])) {
+                            $files = explode(",", $data['isi']);
+                            foreach ($files as $file) {
+                                echo "<a href='../assets/uploads/$file' target='_blank'>$file</a><br>";
+                            }
+                        } else {
+                            echo "Tidak ada file";
+                        }
+                    ?>
+                </td>
+            </tr>
+            <tr>
+                <td>Upload File Baru</td>
+                <td><input type="file" name="file[]" multiple accept=".jpg,.jpeg,.png,.gif,.pdf,.doc,.docx"></td>
+            </tr>
+            <tr></tr>
 
                     <td></td>
                     <td>
