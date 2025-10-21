@@ -41,7 +41,7 @@
             <h3 class="fw-bold text-center"><?php echo($quiz['judul']) ?></h3>
             <p class="mb-1"><?php echo($quiz['deskripsi']) ?></p>
 
-            <small class="text-muted">Total Questions:                                                                                                                                                                                                                                                                                                                                                                                           <?php echo $soal_count ?></small>
+            <small class="text-muted">Total Questions:                                                                                                                                                                                                                                                                                                                                                                                                                                                 <?php echo $soal_count ?></small>
         </div>
 
         <div class="text-center mt-4">

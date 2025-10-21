@@ -26,7 +26,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Quiz:                                                                                                                                                 <?php echo($quiz['judul']) ?></title>
+    <title>Quiz:                                                                                                                                                                 <?php echo($quiz['judul']) ?></title>
     <link rel="stylesheet" href="../assets/css/mulai_quiz.css">
 </head>
 <body>
@@ -36,9 +36,9 @@
     </div>
 
     <div class="progress-container">
-        <div class="question-counter">Question <span id="current-question">1</span> of                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <?php echo count($soal) ?></div>
+        <div class="question-counter">Question <span id="current-question">1</span> of                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             <?php echo count($soal) ?></div>
         <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <?php echo(1 / count($soal)) * 100 ?>%;"
+            <div class="progress-bar" role="progressbar" style="width:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             <?php echo(1 / count($soal)) * 100 ?>%;"
                  aria-valuenow="<?php echo(1 / count($soal)) * 100 ?>" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
     </div>
@@ -81,6 +81,19 @@
         <?php }?>
     </form>
 </div>
+
+<script>
+setInterval(() => {
+    fetch("cek_status.php?id_session=<?php echo $id_session?>")
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === 'running') {
+                window.location.href = "mulai_quiz.php?id_session=<?php echo $id_session?>";
+            }
+        });
+}, 2000);
+</script>
+
 
 <script>
     const cards = document.querySelectorAll('.question-card');

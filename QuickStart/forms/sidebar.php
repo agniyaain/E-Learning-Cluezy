@@ -29,9 +29,9 @@
     </div>
 
     <div class="user-info text-center border-bottom py-3">
-        <img src="https://via.placeholder.com/60" alt="User" class="img-fluid rounded-circle mb-2 border border-light-subtle">
+        <img src="../assets/img/ayinadmin.jpg" alt="User" class="img-fluid rounded-circle mb-2 border border-light-subtle">
         <h6 class="text-white mb-0"><?php echo $_SESSION['username'] ?? 'Admin'; ?></h6>
-        <small class="text-light-emphasis">Administrator</small>
+        <small class="text-light-emphasis text-white">Administrator</small>
     </div>
 
     <nav class="nav flex-column p-3">
