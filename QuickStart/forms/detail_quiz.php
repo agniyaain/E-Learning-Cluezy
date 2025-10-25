@@ -15,6 +15,12 @@
         die("Quiz not found");
     }
 
+    $query_user = "SELECT q.*, u.username FROM quiz q
+              LEFT JOIN user u ON q.id_user = u.id_user
+              WHERE q.id_quiz = $id_quiz";
+    $result_user = mysqli_query($koneksi, $query_user);
+    $data        = mysqli_fetch_assoc($result_user);
+
     // DEBUG: Cek data yang didapat dari database
     error_log("Quiz Data - ID: " . $quiz['id_quiz'] . ", Judul: " . $quiz['judul'] . ", Jumlah Soal: " . $quiz['jumlah_soal']);
 
@@ -40,8 +46,8 @@
         <div class="row g-1 align-items-center">
             <h3 class="fw-bold text-center"><?php echo($quiz['judul']) ?></h3>
             <p class="mb-1"><?php echo($quiz['deskripsi']) ?></p>
-
-            <small class="text-muted">Total Questions:                                                                                                                                                                                                                                                                                                                                                                                                                                                 <?php echo $soal_count ?></small>
+            <medium><strong>Created by: </strong><?php echo($data['username'] ?? 'Unknown User'); ?></medium>
+            <small class="text-muted">Total Questions:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <?php echo $soal_count ?></small>
         </div>
 
         <div class="text-center mt-4">

@@ -65,8 +65,8 @@
                         // Tampilkan gambar dengan lightbox
                     foreach ($imageFiles as $index => $file) {?>
                     <img src="../assets/uploads/<?php echo $file; ?>"
-                         alt="Gambar                                                                                                                                                                                                                         <?php echo $index + 1; ?>"
-                         onclick="openLightbox(this,                                                                                                                                                                                                                                                                                                                         <?php echo $index; ?>)">
+                         alt="Gambar                                                                                                                                                                                                                                                                                                 <?php echo $index + 1; ?>"
+                         onclick="openLightbox(this,                                                                                                                                                                                                                                                                                                                                                                                                                                 <?php echo $index; ?>)">
                 <?php }
 
                         // Tampilkan file lainnya
@@ -102,7 +102,7 @@
 <script>
     // Variabel global untuk lightbox
     let currentImageIndex = 0;
-    const images =                                                                                                             <?php echo json_encode($imageFiles); ?>;
+    const images =                                                                                                                                                 <?php echo json_encode($imageFiles); ?>;
 
     // Fungsi untuk membuka lightbox
     function openLightbox(element, index) {

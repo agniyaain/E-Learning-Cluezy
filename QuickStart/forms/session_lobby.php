@@ -70,19 +70,19 @@
                             while ($p = mysqli_fetch_assoc($peserta)):
                                 $totalPeserta++;
                             ?>
-				                            <tr>
-				                                <td><?php echo htmlspecialchars($p['username']) ?></td>
-				                                <td>
-				                                    <?php
-                                                            if ($p['nilai'] !== null) {
-                                                                echo $p['nilai'];
-                                                            } else {
-                                                                echo '<span class="text-muted">-</span>';
-                                                            }
-                                                        ?>
-				                                </td>
-				                            </tr>
-				                        <?php endwhile; ?>
+									                            <tr>
+									                                <td><?php echo htmlspecialchars($p['username']) ?></td>
+									                                <td>
+									                                    <?php
+                                                                                if ($p['nilai'] !== null) {
+                                                                                    echo $p['nilai'];
+                                                                                } else {
+                                                                                    echo '<span class="text-muted">-</span>';
+                                                                                }
+                                                                            ?>
+									                                </td>
+									                            </tr>
+									                        <?php endwhile; ?>
 
                         <?php if ($totalPeserta == 0): ?>
                         <tr>
@@ -97,26 +97,30 @@
         </div>
 
         <?php if ($is_owner): ?>
-            <?php if ($session_status == 'waiting'): ?>
-                <a href="mulai_session.php?id_session=<?php echo $id_session ?>" class="btn btn-success btn-lg mt-3">
-                    Mulai Quiz 🚀
-                </a>
-            <?php elseif ($session_status == 'running'): ?>
-                <button class="btn btn-warning btn-lg mt-3" disabled>
-                    Quiz Sedang Berlangsung ⏳
-                </button>
-                <a href="selesai_session.php?id_session=<?php echo $id_session ?>" class="btn btn-danger btn-lg mt-3">
-                    Akhiri Quiz 🏁
-                </a>
-            <?php else: ?>
-                <div class="alert alert-success mt-3">
-                    <h5>Quiz Telah Selesai</h5>
-                    <p>Semua peserta sudah menyelesaikan quiz</p>
-                </div>
-                <a href="quiz.php" class="btn btn-primary btn-lg mt-3">
-                    Kembali ke Menu Quiz
-                </a>
-            <?php endif; ?>
+    <?php if ($session_status == 'waiting'): ?>
+        <a href="mulai_session.php?id_session=<?php echo $id_session ?>" class="btn btn-success btn-lg mt-3">
+            Mulai Quiz 🚀
+        </a>
+    <?php elseif ($session_status == 'running'): ?>
+        <button class="btn btn-warning btn-lg mt-3" disabled>
+            Quiz Sedang Berlangsung ⏳
+        </button>
+        <a href="selesai_session.php?id_session=<?php echo $id_session ?>" class="btn btn-danger btn-lg mt-3">
+            Akhiri Quiz 🏁
+        </a>
+
+        <!-- Tombol Export Excel -->
+        <a href="export_excel.php?id_session=<?php echo $id_session ?>" class="btn btn-info btn-lg mt-3">
+            📊 Export Excel
+        </a>
+
+    <?php else: ?>
+        <div class="alert alert-success mt-3">
+            <h5>Quiz Telah Selesai</h5>
+            <p>Semua peserta sudah menyelesaikan quiz</p>
+        </div>
+        <?php endif; ?>
+
         <?php else: ?>
             <!-- Untuk Peserta -->
             <?php if ($session_status == 'waiting'): ?>
@@ -137,7 +141,14 @@
                     Kembali ke Menu Quiz
                 </a>
             <?php endif; ?>
-        <?php endif; ?>
+
+
+        <!-- Tombol Export Excel untuk session selesai
+        <a href="export_excel.php?id_session=<?php echo $id_session ?>" class="btn btn-success btn-lg mt-3">
+            📊 Download Hasil Excel
+        </a> -->
+
+    <?php endif; ?>
 
     </div>
 

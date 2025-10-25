@@ -35,22 +35,10 @@
     </div>
 
     <nav class="nav flex-column p-3">
-        <a class="nav-link text-white active" href="dashboard_admin.php"><i class="bi bi-speedometer2"></i> Dashboard</a>
+        <a class="nav-link text-white" href="dashboard_admin.php"><i class="bi bi-speedometer2"></i> Dashboard</a>
         <a class="nav-link text-white" href="user_dash.php"><i class="bi bi-people"></i> Users</a>
         <a class="nav-link text-white" href="note_dash.php"><i class="bi bi-file-earmark-text"></i> Note</a>
         <a class="nav-link text-white" href="quiz_dash.php"><i class="bi bi-grid"></i> Quiz</a>
-        <a class="nav-link text-white" href="comments.php"><i class="bi bi-chat-left-text"></i> Comments</a>
-        <div class="dropdown">
-            <a class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="bi bi-gear"></i> Settings</a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="profile.php">Profile</a></li>
-                <li><a class="dropdown-item" href="security.php">Security</a></li>
-                <li><a class="dropdown-item" href="notifications.php">Notifications</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="system.php">System</a></li>
-            </ul>
-        </div>
-        <a class="nav-link text-white" href="help.php"><i class="bi bi-question-circle"></i> Help</a>
         <a class="nav-link text-danger" href="logout.php"><i class="bi bi-box-arrow-right"></i> Logout</a>
     </nav>
 </div>
