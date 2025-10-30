@@ -2,16 +2,15 @@
 session_start();
 ?>
 <!DOCTYPE html>
-
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <!-- <link href="../assets/css/login.css" rel="stylesheet"> -->
-    <!-- Favicons -->
+    <title>Tambah User - Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link href="../assets/css/user_dash.css" rel="stylesheet">
     <link href="../assets/img/cluezy-about.png" rel="icon">
 </head>
 
@@ -19,64 +18,66 @@ session_start();
 
     <div class="container signup-container">
         <div class="row signup-box w-100">
-            <!-- Form -->
-            <div class="col-md-6 signup-form">
-                <h2 class="fw-bold mb-4">Tambah User</h2>
+            <!-- Form Section -->
+            <div class="col-12 signup-form">
+                <h2 class="fw-bold mb-4">Tambah User Baru</h2>
                 <form action="simpan_userdash.php" method="post">
-                    <table>
-                        <tr>
-                            <td>Email</td>
-                            <td class="mb-3 input-group">
-                                <span class="input-group-text"><i class="bi bi-person"></i></span>
-                            <td> <input type="text" class="form-control" name="email" placeholder="Enter Email"></td>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Username</td>
-                            <td class="mb-3 input-group">
-                                <span class="input-group-text"><i class="bi bi-person"></i></span>
-                            <td> <input type="text" class="form-control" name="username" placeholder="Enter Username"></td>
-                            </td>
-                        </tr>
+                    <!-- Email Field -->
+                    <div class="form-group mb-3">
+                        <label class="form-label">Email</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                            <input type="email" class="form-control" name="email" placeholder="Enter Email" required>
+                        </div>
+                    </div>
 
-                        <tr>
-                            <td>Role</td>
-                            <td class="mb-3 input-group">
-                                <span class="input-group-text"><i class="bi bi-person"></i></span>
-                            <td>
+                    <!-- Username Field -->
+                    <div class="form-group mb-3">
+                        <label class="form-label">Username</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-person"></i></span>
+                            <input type="text" class="form-control" name="username" placeholder="Enter Username" required>
+                        </div>
+                    </div>
 
-                                <input type="radio" class="form-control" name="role" value="admin">Admin <br>
-                                <input type="radio" class="form-control" name="role" value="user">User <br>
-                            </td>
+                    <!-- Role Field -->
+                    <div class="form-group mb-3">
+                        <label class="form-label">Role</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-shield-check"></i></span>
+                            <div class="form-control role-selection">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="role" id="roleAdmin" value="admin" required>
+                                    <label class="form-check-label" for="roleAdmin">Admin</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="role" id="roleUser" value="user">
+                                    <label class="form-check-label" for="roleUser">User</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Password</td>
-                            <td class="mb-3 input-group">
-                                <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                            <td><input type="password" class="form-control" name="pass" placeholder="Password"> </td>
-                            </td>
-                        </tr>
+                    <!-- Password Field -->
+                    <div class="form-group mb-4">
+                        <label class="form-label">Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                            <input type="password" class="form-control" name="pass" placeholder="Password" required>
+                        </div>
+                    </div>
 
-                        <tr>
-                            <td></td>
-                            <td>
-                                <input type="submit" value="SUBMIT" class="submit">
-                                <input type="reset" value="RESET" class="batal">
-                            </td>
-                        </tr>
-                    </table>
-
+                    <!-- Buttons -->
+                    <div class="form-group button-group">
+                        <button type="submit" class="btn submit">SUBMIT</button>
+                        <button type="reset" class="btn batal">RESET</button>
+                    </div>
                 </form>
             </div>
-
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
-
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

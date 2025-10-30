@@ -1,0 +1,243 @@
+/* user_dash.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ffffff80 0%, #c5b670 100%);
+    /* min-height: 100%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container{
+    /* height: auto; */
+}
+
+.container.signup-container {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.signup-box {
+    background: white;
+    border-radius: 15px;
+    /* box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); */
+    overflow: hidden;
+    display: flex;
+    min-height: auto;
+}
+
+.signup-form {
+    padding: 40px;
+    flex: 1;
+    background: #f8f9fa;
+}
+
+.signup-form h2 {
+    color: #2c3e50;
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 600;
+}
+
+form table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+form table tr {
+    border-bottom: 1px solid #e9ecef;
+}
+
+form table tr:last-child {
+    border-bottom: none;
+}
+
+form table td {
+    padding: 15px 10px;
+    vertical-align: middle;
+}
+
+form table td:first-child {
+    width: 120px;
+    font-weight: 600;
+    color: #495057;
+    font-size: 14px;
+}
+
+.input-group {
+    border: none !important;
+    padding: 0 !important;
+}
+
+.input-group-text {
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-right: none;
+    padding: 10px 15px;
+    color: #6c757d;
+}
+
+.form-control {
+    border: 1px solid #ced4da;
+    border-radius: 0 5px 5px 0 !important;
+    padding: 10px 15px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #eab566;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+/* Radio button styling */
+.form-control[type="radio"] {
+    width: auto;
+    margin-right: 5px;
+    transform: scale(1.1);
+}
+
+/* Style for radio button labels */
+.form-control[type="radio"] + label {
+    margin-right: 15px;
+    font-weight: normal;
+    color: #495057;
+}
+
+/* Submit and Reset buttons */
+.submit, .batal {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+}
+
+.submit {
+    background: linear-gradient(135deg, #c5b670 50%, #ffffff80 100%);
+    color: white;
+}
+
+.submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.batal {
+    background: #6c757d;
+    color: white;
+}
+
+.batal:hover {
+    background: #5a6268;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(108, 117, 125, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .signup-box {
+        flex-direction: column;
+    }
+    
+    .signup-form {
+        padding: 30px 20px;
+    }
+    
+    form table td:first-child {
+        width: 100px;
+    }
+    
+    .submit, .batal {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .signup-form {
+        padding: 20px 15px;
+    }
+    
+    .signup-form h2 {
+        font-size: 24px;
+    }
+    
+    form table td {
+        padding: 10px 5px;
+        display: block;
+        width: 100%;
+    }
+    
+    form table td:first-child {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    
+    .input-group-text {
+        padding: 8px 12px;
+    }
+    
+    .form-control {
+        padding: 8px 12px;
+    }
+}
+
+/* Additional styling for better visual hierarchy */
+form table tr:hover {
+    background-color: rgba(102, 126, 234, 0.02);
+}
+
+.input-group-text i {
+    font-size: 16px;
+}
+
+/* Custom radio button styling */
+input[type="radio"] {
+    accent-color: #667eea;
+}
+
+/* Placeholder styling */
+.form-control::placeholder {
+    color: #adb5bd;
+    font-size: 13px;
+}
+
+/* Success message styling (optional) */
+.success-message {
+    background: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #c3e6cb;
+}
+
+/* Error message styling (optional) */
+.error-message {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #f5c6cb;
+}

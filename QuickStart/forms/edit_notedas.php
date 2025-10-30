@@ -1,84 +1,99 @@
 <?php
-    session_start();
+session_start();
 ?>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Edit User</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Note</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/css/user_dash.css">
+    <!-- Favicons -->
+    <link href="../assets/img/cluezy-about.png" rel="icon">
+</head>
 
-        <!-- <link rel="stylesheet" href="style.css"> -->
-    </head>
-    <body>
-        <div class="container container-fluid" >
-             <div class="row">
-                <div class="col-md-9 col-lg-10 ms-sm-auto px-4 py-4">
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+<body>
 
-        <h1>Edit User</h1>
-    </div>
-            <hr>
-            <?php
+    <div class="container signup-container">
+        <div class="row signup-box w-100">
+            <!-- Form Section -->
+            <div class="col-12 signup-form">
+                <h2 class="fw-bold mb-4">Edit Note</h2>
+
+                <?php
                 $id_note = $_GET['id_note'];
                 include "koneksi.php";
 
-                $query  = "select * from catatan where id_note=$id_note";
+                $query  = "SELECT * FROM catatan WHERE id_note=$id_note";
                 $result = mysqli_query($koneksi, $query);
                 $data   = mysqli_fetch_assoc($result);
+                ?>
 
-            ?>
-            <form action="update_notedash.php" method="post">
-                <table>
+                <form action="update_notedash.php" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="id_note" value="<?php echo $data['id_note']; ?>">
 
-                    <tr>
-            </tr>
-            <tr>
-                <input type="hidden" name="id_note" value="<?php echo $data['id_note']; ?>">
-                <td>Judul</td>
-                <td><input type="text" name="judul" value="<?php echo $data['judul']; ?>"></td>
-            </tr>
-            <tr>
-                <td>Deskripsi</td>
-                <td><input type="text" name="deskripsi" value="<?php echo $data['deskripsi']; ?>"></td>
-            </tr>
+                    <!-- Judul Field -->
+                    <div class="form-group mb-3">
+                        <label class="form-label">Judul</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-card-heading"></i></span>
+                            <input type="text" class="form-control" name="judul" value="<?php echo htmlspecialchars($data['judul']); ?>" placeholder="Enter Judul" required>
+                        </div>
+                    </div>
 
-<tr>
-                <td>File Saat Ini</td>
-                <td>
-                    <?php
-                        if (! empty($data['isi'])) {
-                            $files = explode(",", $data['isi']);
-                            foreach ($files as $file) {
-                                echo "<a href='../assets/uploads/$file' target='_blank'>$file</a><br>";
+                    <!-- Deskripsi Field -->
+                    <div class="form-group mb-3">
+                        <label class="form-label">Deskripsi</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-text-paragraph"></i></span>
+                            <input type="text" class="form-control" name="deskripsi" value="<?php echo htmlspecialchars($data['deskripsi']); ?>" placeholder="Enter Deskripsi" required>
+                        </div>
+                    </div>
+
+                    <!-- File Saat Ini -->
+                    <div class="form-group mb-3">
+                        <label class="form-label">File Saat Ini</label>
+                        <div class="current-files">
+                            <?php
+                            if (!empty($data['isi'])) {
+                                $files = explode(",", $data['isi']);
+                                foreach ($files as $file) {
+                                    echo '<div class="file-item mb-2">';
+                                    echo '<i class="bi bi-file-earmark me-2"></i>';
+                                    echo "<a href='../assets/uploads/$file' target='_blank' class='text-decoration-none'>$file</a>";
+                                    echo '</div>';
+                                }
+                            } else {
+                                echo '<div class="text-muted">Tidak ada file</div>';
                             }
-                        } else {
-                            echo "Tidak ada file";
-                        }
-                    ?>
-                </td>
-            </tr>
-            <tr>
-                <td>Upload File Baru</td>
-                <td><input type="file" name="file[]" multiple accept=".jpg,.jpeg,.png,.gif,.pdf,.doc,.docx"></td>
-            </tr>
-            <tr></tr>
+                            ?>
+                        </div>
+                    </div>
 
-                    <td></td>
-                    <td>
-                        <input type="submit" value = "SUBMIT" class = "submit">
-                        <a href="note_dash.php" value = "RESET" class = "batal"> BATAL </a>
-                    </td>
-                </tr>
-                </table>
-            </form>
+                    <!-- Upload File Baru -->
+                    <div class="form-group mb-4">
+                        <label class="form-label">Upload File Baru</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-cloud-upload"></i></span>
+                            <input type="file" class="form-control" name="file[]" multiple accept=".jpg,.jpeg,.png,.gif,.pdf,.doc,.docx">
+                        </div>
+                        <small class="form-text text-muted">File yang diupload akan menggantikan file lama. Kosongkan jika tidak ingin mengubah file.</small>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="form-group button-group">
+                        <button type="submit" class="btn submit">UPDATE</button>
+                        <a href="note_dash.php" class="btn batal">BATAL</a>
+                    </div>
+                </form>
             </div>
-</div>
         </div>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
 
-    </body>
-    </html>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

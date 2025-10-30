@@ -1,16 +1,35 @@
 
         @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css');
         
+        
+        html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
         .todo-list * {
             box-sizing: border-box;
             font-family: 'Poppins', cursive;
         }
         
         .todo-list {
+    min-height: 80vh; /* Pastikan konten cukup tinggi */
+    padding-bottom: 100px; /* Beri ruang untuk footer */
+
+            flex: 1;
             background: linear-gradient(135deg, #fdf7f4, #f5ede8);
             font-family: 'Poppins', cursive;
-            min-height: 100vh;
+                /* min-height: calc(100vh - 200px); Kurangi tinggi footer */
+
             padding-bottom: 50px;
+                padding: 80px 0 50px; /* TAMBAHKAN PADDING TOP 40px */
+
             background-image: 
                 radial-gradient(#e8e0da 15%, transparent 15%), 
                 radial-gradient(#e8e0da 15%, transparent 15%);

@@ -1,95 +1,187 @@
-
-<!doctype html>
+<?php
+session_start();
+?>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Make Quiz</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/css/user_dash.css">
     <style>
+        .question-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+        }
 
+        .question-card .card-body {
+            padding: 20px;
+        }
     </style>
+</head>
+
+<body>
+
+    <div class="container signup-container">
+        <div class="row signup-box w-100">
+            <div class="col-12 signup-form">
+                <h2 class="fw-bold mb-4">Tambah Quiz</h2>
+
+                <?php if (isset($error)) { ?>
+                    <div class="alert alert-danger"><?php echo $error ?></div>
+                <?php } ?>
+
+                <form method="POST" action="simpan_quizdash.php">
+                    <!-- Judul Field -->
+                    <div class="form-group mb-3">
+                        <label class="form-label">Judul Quiz</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-pencil-square"></i></span>
+                            <input type="text" class="form-control" name="judul" placeholder="Enter Judul Quiz" required>
+                        </div>
+                    </div>
+
+                    <!-- Deskripsi Field -->
+                    <div class="form-group mb-4">
+                        <label class="form-label">Deskripsi</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-text-left"></i></span>
+                            <textarea class="form-control" name="deskripsi" placeholder="Enter Deskripsi Quiz" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Questions Section -->
+                    <h4 class="mb-3">Pertanyaan</h4>
+                    <div id="questionsContainer"></div>
+
+                    <!-- Add Question Button -->
+                    <div class="form-group mb-4">
+                        <button type="button" class="btn btn-secondary" onclick="addQuestion()">
+                            <i class="bi bi-plus-circle"></i> Tambah Pertanyaan
+                        </button>
+                    </div>
+
+                    <!-- Hidden field for question count -->
+                    <input type="hidden" name="jumlah_soal" id="jumlah_soal">
+
+                    <!-- Buttons -->
+                    <div class="form-group button-group">
+                        <button type="submit" class="btn submit">SIMPAN QUIZ</button>
+                        <a href="quiz.php" class="btn batal">BATAL</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script>
-    function updateJumlahSoal() {
-        const count = document.getElementById('questionsContainer').children.length;
-        document.getElementById('jumlah_soal').value = count;
-    }
+        function updateJumlahSoal() {
+            const count = document.getElementById('questionsContainer').children.length;
+            document.getElementById('jumlah_soal').value = count;
+        }
 
-    function addQuestion() {
-        const container = document.getElementById('questionsContainer');
-        const count = container.children.length + 1;
-        const id = Date.now();
+        function addQuestion() {
+            const container = document.getElementById('questionsContainer');
+            const count = container.children.length + 1;
+            const id = Date.now();
 
-        const questionHTML = `
+            const questionHTML = `
         <div class="card mb-3 question-card" data-id="${id}">
             <div class="card-body">
-                <h5>Question ${count}</h5>
-                <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Question text" name="soal[${id}][soal]" required>
+                <h5 class="mb-3">Pertanyaan ${count}</h5>
+                
+                <!-- Question Text -->
+                <div class="form-group mb-3">
+                    <label class="form-label">Teks Pertanyaan</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-chat-question"></i></span>
+                        <input type="text" class="form-control" placeholder="Masukkan teks pertanyaan" name="soal[${id}][soal]" required>
+                    </div>
                 </div>
-                <div class="row g-2 mb-3">
-                    <div class="col-6"><input type="text" class="form-control" placeholder="Choice A" name="soal[${id}][a]" required></div>
-                    <div class="col-6"><input type="text" class="form-control" placeholder="Choice B" name="soal[${id}][b]" required></div>
-                    <div class="col-6"><input type="text" class="form-control" placeholder="Choice C" name="soal[${id}][c]" required></div>
-                    <div class="col-6"><input type="text" class="form-control" placeholder="Choice D" name="soal[${id}][d]" required></div>
+
+                <!-- Choices -->
+                <div class="form-group mb-3">
+                    <label class="form-label">Pilihan Jawaban</label>
+                    <div class="row g-2">
+                        <div class="col-12 mb-2">
+                            <div class="input-group">
+                                <span class="input-group-text">A</span>
+                                <input type="text" class="form-control" placeholder="Pilihan A" name="soal[${id}][a]" required>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <div class="input-group">
+                                <span class="input-group-text">B</span>
+                                <input type="text" class="form-control" placeholder="Pilihan B" name="soal[${id}][b]" required>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <div class="input-group">
+                                <span class="input-group-text">C</span>
+                                <input type="text" class="form-control" placeholder="Pilihan C" name="soal[${id}][c]" required>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <div class="input-group">
+                                <span class="input-group-text">D</span>
+                                <input type="text" class="form-control" placeholder="Pilihan D" name="soal[${id}][d]" required>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label>Correct Answer:</label>
-                    <select class="form-select" name="soal[${id}][jawaban_benar]" required>
-                        <option value="a">A</option>
-                        <option value="b">B</option>
-                        <option value="c">C</option>
-                        <option value="d">D</option>
-                    </select>
+
+                <!-- Correct Answer -->
+                <div class="form-group mb-3">
+                    <label class="form-label">Jawaban Benar</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-check-circle"></i></span>
+                        <select class="form-select" name="soal[${id}][jawaban_benar]" required>
+                            <option value="a">A</option>
+                            <option value="b">B</option>
+                            <option value="c">C</option>
+                            <option value="d">D</option>
+                        </select>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-danger btn-sm" onclick="removeQuestion(${id})">Remove Question</button>
+
+                <!-- Remove Button -->
+                <button type="button" class="btn btn-danger btn-sm" onclick="removeQuestion(${id})">
+                    <i class="bi bi-trash"></i> Hapus Pertanyaan
+                </button>
             </div>
         </div>
         `;
 
-        container.insertAdjacentHTML('beforeend', questionHTML);
-        updateJumlahSoal(); // TAMBAH INI
-    }
-
-    function removeQuestion(id) {
-        const card = document.querySelector(`.question-card[data-id="${id}"]`);
-        if(card){
-            card.remove();
-            updateJumlahSoal(); // TAMBAH INI
+            container.insertAdjacentHTML('beforeend', questionHTML);
+            updateJumlahSoal();
         }
-    }
 
-    window.onload = () => {
-        addQuestion();
-        updateJumlahSoal(); // TAMBAH INI
-    }
-</script>
-</head>
-<body>
-<div class="container py-4">
-    <h2>Create New Quiz</h2>
-    <?php if (isset($error)) {?>
-        <div class="alert alert-danger"><?php echo $error ?></div>
-    <?php }?>
-    <form method="POST" action="simpan_quizdash.php">
-        <div class="mb-3">
-            <label for="judul" class="form-label">Title</label>
-            <input type="text" id="judul" name="judul" class="form-control" required>
-        </div>
+        function removeQuestion(id) {
+            const card = document.querySelector(`.question-card[data-id="${id}"]`);
+            if (card) {
+                card.remove();
+                updateJumlahSoal();
+                // Re-number remaining questions
+                const questions = document.querySelectorAll('.question-card');
+                questions.forEach((card, index) => {
+                    const title = card.querySelector('h5');
+                    if (title) {
+                        title.textContent = `Pertanyaan ${index + 1}`;
+                    }
+                });
+            }
+        }
 
-        <div class="mb-3">
-            <label for="deskripsi" class="form-label">Description</label>
-            <textarea id="deskripsi" name="deskripsi" class="form-control"></textarea>
-        </div>
+        window.onload = () => {
+            addQuestion();
+            updateJumlahSoal();
+        }
+    </script>
 
-        <h4>Questions</h4>
-        <div id="questionsContainer"></div>
-
-        <button type="button" class="btn btn-secondary mb-3" onclick="addQuestion()">Add Question</button>
-
-        <br>
-        <input type="hidden" name="jumlah_soal" id="jumlah_soal" >
-        <button type="submit" class="btn btn-primary">Save Quiz</button>
-        <a href="quiz.php" class="btn btn-secondary">Cancel</a>
-    </form>
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

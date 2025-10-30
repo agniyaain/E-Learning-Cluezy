@@ -15,18 +15,21 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link" href="home.php">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="profil.php">Profile</a></li>
-        <li class="nav-item dropdown">
+        <li class="nav-item"><a class="nav-link" href="note.php">Note</a></li>
+        <li class="nav-item"><a class="nav-link" href="quiz.php">Quiz</a></li>
+        <li class="nav-item"><a class="nav-link" href="todolist.php">To Do List</a></li>
+        <li class="nav-item"><a class="nav-link" href="timer.php">Pomodoro</a></li>
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
             Features
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item " href="note.php"><i class="bi bi-journals icon"></i>  Note Space</a></li>
-            <li><a class="dropdown-item " href="quiz.php"><i class="bi bi-patch-question icon"></i>  Quiz Zone </a></li>
-            <li><a class="dropdown-item " href="todolist.php"><i class="bi bi-list-task icon"></i>  To Do List</a></li>
-            <li><a class="dropdown-item " href="timer.php"><i class="bi bi-alarm icon"></i>  PomPom</a></li>
+            <li><a class="dropdown-item " href="note.php"><i class="bi bi-journals icon"></i> Note Space</a></li>
+            <li><a class="dropdown-item " href="quiz.php"><i class="bi bi-patch-question icon"></i> Quiz Zone </a></li>
+            <li><a class="dropdown-item " href="todolist.php"><i class="bi bi-list-task icon"></i> To Do List</a></li>
+            <li><a class="dropdown-item " href="timer.php"><i class="bi bi-alarm icon"></i> PomPom</a></li>
           </ul>
-        </li>
+        </li> -->
       </ul>
       <form class="d-flex" action="logout.php">
         <button class="btn btn-danger btn-logout" type="submit" onclick="return confirm('Apakah Anda yakin keluar?')">

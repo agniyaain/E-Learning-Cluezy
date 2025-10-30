@@ -16,7 +16,7 @@ if ($session['id_user'] != $_SESSION['id_user']) {
 }
 
 // Update status session menjadi 'finished'
-mysqli_query($koneksi, "UPDATE quiz_session SET status='ended' WHERE id_session='$id_session'");
+mysqli_query($koneksi, "UPDATE quiz_session SET status='finished' WHERE id_session='$id_session'");
 
 // Redirect kembali ke lobby
 header("Location: session_lobby.php?id_session=$id_session");
