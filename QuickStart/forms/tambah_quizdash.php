@@ -70,7 +70,7 @@ session_start();
                     <!-- Buttons -->
                     <div class="form-group button-group">
                         <button type="submit" class="btn submit">SIMPAN QUIZ</button>
-                        <a href="quiz.php" class="btn batal">BATAL</a>
+                        <a href="quiz_dash.php" class="btn batal">BATAL</a>
                     </div>
                 </form>
             </div>

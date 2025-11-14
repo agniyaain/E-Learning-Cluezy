@@ -1,233 +1,382 @@
+/* todo.css - Enhanced Version */
 
-        @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css');
-        
-        
-        html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+:root {
+  --warna-coklat-tua: #7f6f67;
+  --warna-coklat: #a89a93;
+  --warna-coklat-muda: #d1c8c3;
+  --warna-krem: #f5f1ee;
+  --warna-putih: #faf9f8;
+  --warna-aksen: #ff9f66;
+  --warna-success: #28a745;
+  --warna-warning: #ffc107;
+  --warna-danger: #dc3545;
+  --warna-info: #17a2b8;
+  --shadow-small: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0 4px 15px rgba(0, 0, 0, 0.1);
+  --shadow-large: 0 8px 25px rgba(0, 0, 0, 0.12);
+  --border-radius: 16px;
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
+
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  background: linear-gradient(135deg, var(--warna-krem) 0%, #ffffff 100%);
+  font-family: 'Nunito', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
 }
 
-        .todo-list * {
-            box-sizing: border-box;
-            font-family: 'Poppins', cursive;
-        }
-        
-        .todo-list {
-    min-height: 80vh; /* Pastikan konten cukup tinggi */
-    padding-bottom: 100px; /* Beri ruang untuk footer */
+.todo-list {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 50px 20px;
+}
 
-            flex: 1;
-            background: linear-gradient(135deg, #fdf7f4, #f5ede8);
-            font-family: 'Poppins', cursive;
-                /* min-height: calc(100vh - 200px); Kurangi tinggi footer */
+.todo-card {
+  background: #ffffff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-large);
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 900px;
+  transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto; /* Memastikan card berada di tengah */
+}
 
-            padding-bottom: 50px;
-                padding: 80px 0 50px; /* TAMBAHKAN PADDING TOP 40px */
+.todo-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--warna-coklat), var(--warna-aksen));
+}
 
-            background-image: 
-                radial-gradient(#e8e0da 15%, transparent 15%), 
-                radial-gradient(#e8e0da 15%, transparent 15%);
-            background-size: 30px 30px;
-            background-position: 0 0, 15px 15px;
-        }
-        
-        .todo-list h2 {
-            font-weight: bold;
-            color: #7f6f67;
-            text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.5);
-            position: relative;
-            display: inline-block;
-            padding: 0 10px;
-        }
-        
-        .todo-list h2::after {
-            content: "✨";
-            position: absolute;
-            top: -15px;
-            right: -25px;
-            font-size: 30px;
-        }
-        
-        .todo-list .todo-card {
-            background: #fff9f5;
-            border-radius: 25px;
-            padding: 30px;
-            box-shadow: 0 10px 25px rgba(127, 111, 103, 0.15);
-            border: 3px dashed #7f6f67;
-            margin-top: 30px;
-            position: relative;
-            overflow: visible !important;
-        }
-        
-        .todo-list .todo-card::before {
-            content: "📝";
-            position: absolute;
-            top: -15px;
-            right: -15px;
-            font-size: 40px;
-            transform: rotate(15deg);
-            z-index: 0;
-        }
-        
-        .todo-list select,
-        input[type="text"] {
-            border-radius: 15px;
-            border: 2px solid #d6c9c1;
-            padding: 12px 15px;
-            background: #f9f5f2;
-            transition: all 0.3s ease;
-        }
-        
-        .todo-list select:focus,
-        input[type="text"]:focus {
-            border-color: #7f6f67;
-            box-shadow: 0 0 0 0.25rem rgba(127, 111, 103, 0.25);
-            background: white;
-        }
-        
-        .todo-list .btn-primary {
-            background: linear-gradient(45deg, #7f6f67, #a7948b);
-            border: none;
-            border-radius: 15px;
-            padding: 12px 25px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(127, 111, 103, 0.3);
-        }
-        
-        .todo-list .btn-primary:hover {
-            background: linear-gradient(45deg, #6a5d56, #8c7c74);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(127, 111, 103, 0.4);
-        }
-        
-        .todo-list table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin-top: 25px;
-            border-radius: 15px;
-            overflow: visible;
-        }
-        
-        .todo-list table th {
-            background: #a7948b;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            font-size: 18px;
-            position: relative;
-        }
-        
-        .todo-list table th:first-child {
-            border-top-left-radius: 15px;
-        }
-        
-        .todo-list table th:last-child {
-            border-top-right-radius: 15px;
-        }
-        
-        .todo-list table th::after {
-            content: "▼";
-            margin-left: 8px;
-            font-size: 14px;
-        }
-        
-        .todo-list table td {
-            padding: 15px;
-            border-bottom: 2px solid #f3ede8;
-            background: #f9f5f2;
-            transition: all 0.3s ease;
-        }
-        
-        .todo-list table tr:last-child td:first-child {
-            border-bottom-left-radius: 15px;
-        }
-        
-        .todo-list table tr:last-child td:last-child {
-            border-bottom-right-radius: 15px;
-        }
-        
-        .todo-list table tr:hover td {
-            background: #f3ede8;
-            transform: scale(1.01);
-        }
-        
-        .todo-list .table-danger {
-            background: #ffe9e9 !important;
-            color: #c62828;
-            font-weight: bold;
-        }
-        
-        .todo-list .table-warning {
-            background: #fff3cd !important;
-            color: #856404;
-            font-weight: bold;
-        }
-        
-        .todo-list .table-success {
-            background: #d4edda !important;
-            color: #155724;
-            font-weight: bold;
-            position: relative;
-        }
-        
-        .todo-list .table-success::after {
-            content: "✔";
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 18px;
-        }
-        
-        .todo-list.dropdown-toggle::after {
-            display: none;
-        }
-        
-        .todo-list .dropdown-menu {
-            position: absolute;
-            transform: translate3d(0,0,0 );
-            will-change: transform;
-            border-radius: 15px;
-            border: 2px solid #d6c9c1;
-            z-index: 1050;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .todo-list .dropdown-item {
-            padding: 10px 15px;
-            transition: all 0.2s ease;
-        }
-        
-        .todo-list .dropdown-item:hover {
-            background: #f3ede8;
-            padding-left: 20px;
-        }
-        
-        .todo-list .dropdown-item.text-danger:hover {
-            background: #ffe9e9;
-        }
-        
-        @media (max-width: 768px) {
-            .todo-list .todo-card {
-                padding: 20px;
-            }
-            
-            .todo-list table th,
-            table td {
-                padding: 10px;
-            }
-            
-            .todo-list .btn-primary {
-                width: 100%;
-            }
-        }
-        
+.todo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-large);
+}
+
+h2 {
+  font-weight: 800;
+  color: var(--warna-coklat-tua);
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 25%;
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--warna-aksen), transparent);
+  border-radius: 2px;
+}
+
+.table {
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: var(--shadow-small);
+  margin-top: 1.5rem;
+}
+
+.table thead th {
+  color: white;
+  text-align: center;
+  border: none;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 18px 15px;
+  background: linear-gradient(135deg, var(--warna-coklat) 0%, var(--warna-coklat-tua) 100%) !important;
+  position: relative;
+}
+
+.table thead th:first-child {
+  border-radius: 12px 0 0 0;
+}
+
+.table thead th:last-child {
+  border-radius: 0 12px 0 0;
+}
+
+.table tbody tr {
+  transition: var(--transition);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  transform: translateX(5px);
+  box-shadow: var(--shadow-medium);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.table td {
+  vertical-align: middle;
+  padding: 18px 15px;
+  font-size: 16px;
+  border: none;
+}
+
+/* Enhanced Status Colors */
+.table-danger {
+  background: linear-gradient(135deg, #f8d7da 0%, #f1b0b7 100%) !important;
+  color: #721c24;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.table-warning {
+  background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%) !important;
+  color: #856404;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.table-success {
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%) !important;
+  color: #155724;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Status Badges */
+.table td:first-child {
+  text-align: center;
+  /* border-radius: 8px; */
+  margin: 0 5px;
+  position: relative;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, var(--warna-coklat) 0%, var(--warna-coklat-tua) 100%);
+  border: none;
+  font-weight: 700;
+  transition: var(--transition);
+  border-radius: 10px;
+  padding: 12px 24px;
+  box-shadow: var(--shadow-small);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+  background: linear-gradient(135deg, var(--warna-coklat-tua) 0%, var(--warna-coklat) 100%);
+}
+
+/* Form Elements */
+.form-label {
+  font-weight: 700;
+  color: var(--warna-coklat-tua);
+  margin-bottom: 8px;
+}
+
+.form-control, .form-select {
+  border-radius: 10px;
+  border: 2px solid var(--warna-coklat-muda);
+  transition: var(--transition);
+  padding: 12px 16px;
+  font-size: 1rem;
+  background-color: var(--warna-putih);
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--warna-coklat);
+  box-shadow: 0 0 0 0.2rem rgba(167, 148, 139, 0.25);
+  background-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.todo-list.dropdown-toggle::after {
+    display: none;
+}
+
+.todo-list .dropdown-menu {
+    position: absolute;
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+    border-radius: 15px;
+    border: 2px solid #d6c9c1;
+    z-index: 1050;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.todo-list .dropdown-item {
+    padding: 10px 15px;
+    transition: all 0.2s ease;
+}
+
+.todo-list .dropdown-item:hover {
+    background: #f3ede8;
+    padding-left: 20px;
+}
+
+.todo-list .dropdown-item.text-danger:hover {
+    background: #ffe9e9;
+}
+.text-danger:hover {
+  background-color: #ffe8e8;
+}
+
+/* Task Item Styling */
+.task-item {
+  display: flex;
+  justify-content: between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.task-text {
+  flex-grow: 1;
+  font-weight: 500;
+  color: var(--warna-coklat-tua);
+}
+
+/* Action Menu
+.dropdown-toggle::after {
+  /* display: none; */
+/* } */ 
+
+.dropdown-toggle img {
+  transition: var(--transition);
+  opacity: 0.7;
+}
+
+.dropdown-toggle:hover img {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .todo-list {
+    padding: 20px 10px;
+  }
+  
+  .todo-card {
+    padding: 25px 20px;
+    margin: 20px 10px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .table td {
+    font-size: 14px;
+    padding: 12px 8px;
+  }
+
+  .btn-primary {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+
+  .form-control, .form-select {
+    padding: 10px 12px;
+  }
+  
+  .table thead th {
+    padding: 12px 8px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Animation for new tasks */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.table tbody tr {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* Custom scrollbar for table */
+.table-responsive::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background: var(--warna-krem);
+  border-radius: 10px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background: var(--warna-coklat);
+  border-radius: 10px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+  background: var(--warna-coklat-tua);
+}
+
+/* Status indicator dots */
+.status-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.status-notyet .status-indicator {
+  background-color: var(--warna-danger);
+}
+
+.status-doing .status-indicator {
+  background-color: var(--warna-warning);
+}
+
+.status-done .status-indicator {
+  background-color: var(--warna-success);
+}

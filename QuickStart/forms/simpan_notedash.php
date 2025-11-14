@@ -2,9 +2,33 @@
 include "koneksi.php";
 session_start();
 
+// Debug: Cek session
+var_dump($_SESSION);
+if (!isset($_SESSION['id_user']) || empty($_SESSION['id_user'])) {
+    echo '<script>
+            alert("Silakan login terlebih dahulu.");
+            window.location.href="login.php";
+          </script>';
+    exit;
+}
+
+// Pastikan id_user valid
+$id_user = mysqli_real_escape_string($koneksi, $_SESSION['id_user']);
+
+// Verifikasi user exists di database
+$check_user = mysqli_query($koneksi, "SELECT id_user FROM user WHERE id_user = '$id_user'");
+if (mysqli_num_rows($check_user) == 0) {
+    echo '<script>
+            alert("User tidak valid. Silakan login kembali.");
+            window.location.href="login.php";
+          </script>';
+    exit;
+}
+
+
+$id_user   = $_SESSION['id_user']; // kalau belum login, default 0
 $judul     = $_POST['judul'];
 $deskripsi = $_POST['deskripsi'];
-$id_user   = $_SESSION['id_user'] ?? 0; // kalau belum login, default 0
 
 $uploadDir = __DIR__ . "/../assets/uploads/";
 
