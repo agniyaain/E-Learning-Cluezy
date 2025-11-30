@@ -70,7 +70,7 @@ session_start();
                     <!-- Buttons -->
                     <div class="form-group button-group">
                         <button type="submit" class="btn submit">SUBMIT</button>
-                        <button type="reset" class="btn batal">RESET</button>
+                        <a href="user_dash.php" class="btn batal">BATAL</a>
                     </div>
                 </form>
             </div>

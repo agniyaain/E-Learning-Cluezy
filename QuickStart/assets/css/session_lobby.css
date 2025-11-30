@@ -296,6 +296,19 @@ p {
     font-size: 1.1rem;
 }
 
+.back-btn {
+    position: fixed;
+    top: 20px;
+    /* right: 20px; */
+    background: transparent;
+    border: none;
+    font-size: 35px;
+    color: #7f6f67;
+    cursor: pointer;
+    z-index: 9999;
+    transition: 0.2s;
+}
+
 /* Participant Counter */
 .participant-counter {
     background: linear-gradient(145deg, #e8e0da, #d6cbc2);

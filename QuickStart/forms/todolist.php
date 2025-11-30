@@ -24,6 +24,7 @@ include "navigasi.php";
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/todo.css">
+    <title>To Do List</title>
 </head>
 
 <body>
@@ -40,7 +41,7 @@ include "navigasi.php";
                     </div>
                     <div class="col-md-3">
                         <label class="form-label">Status</label>
-                        <select name="status" class="form-select ">
+                        <select name="status" class="form-select">
                             <?php
                             include "koneksi.php";
                             $query  = "select * from status_todo ORDER BY FIELD(status, 'Not Yet', 'Doing', 'Done')";
@@ -105,7 +106,13 @@ include "navigasi.php";
             </div>
         </div>
     </div>
-    <?php include "footer.php"; ?>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> -->
+    <!-- <?php
+            // include "footer.php"; 
+            ?> -->
+
 </body>
+
 
 </html>

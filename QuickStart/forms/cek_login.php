@@ -10,8 +10,10 @@ $query = "select * from user where username = '" . $username . "' and pass = '" 
 $rows = mysqli_query($koneksi, $query);
 $data = mysqli_fetch_assoc($rows);
 
-if ($username == "admin_niya" && $pass = "admin_ayin123") {
+if ($data['role'] == "admin") {
 
+
+    $_SESSION['role']     = "admin";
     $_SESSION['id_user']  = $data['id_user'];
     $_SESSION['username'] = $data['username'];
 

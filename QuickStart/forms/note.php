@@ -136,7 +136,7 @@ if (isset($_POST['ajax']) && $_POST['ajax'] == "1") {
   });
 </script>
 
-<?php include "footer.php"; ?>
+<!-- <?php include "footer.php"; ?> -->
 
 
 </html>

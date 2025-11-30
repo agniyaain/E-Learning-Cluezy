@@ -21,7 +21,7 @@ $result = mysqli_query($koneksi, $query);
 if ($result) {
     echo '<script>
                     alert("Succesfull save edited task!");
-                   window.location.href="todolist.php";
+                 window.location.href="todolist.php";
                 </script>';
 } else {
     echo '<script>

@@ -181,19 +181,19 @@
     }
 
     function setLengthButtonsDisabled(state) {
-    breakIncrement.disabled = state;
-    breakDecrement.disabled = state;
-    sessionIncrement.disabled = state;
-    sessionDecrement.disabled = state;
-    repeatIncrement.disabled = state;
-    repeatDecrement.disabled = state;
+        breakIncrement.disabled = state;
+        breakDecrement.disabled = state;
+        sessionIncrement.disabled = state;
+        sessionDecrement.disabled = state;
+        repeatIncrement.disabled = state;
+        repeatDecrement.disabled = state;
 
-    const buttons = document.querySelectorAll('.length-button');
-    buttons.forEach(btn => {
-        btn.style.opacity = state ? '0.5' : '1';
-        btn.style.pointerEvents = state ? 'none' : 'auto';
-    });
-}
+        const buttons = document.querySelectorAll('.length-button');
+        buttons.forEach(btn => {
+            btn.style.opacity = state ? '0.5' : '1';
+            btn.style.pointerEvents = state ? 'none' : 'auto';
+        });
+    }
 
 
     startPauseBtn.addEventListener('click', () => {
@@ -299,6 +299,6 @@
     updateLengthsDisplay();
 </script>
 </body>
-<?php include "footer.php"; ?>
+<!-- <?php include "footer.php"; ?> -->
 
 </html>

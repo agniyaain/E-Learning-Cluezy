@@ -38,6 +38,11 @@ $session_status = $session['status'];
 </head>
 
 <body class="bg-light">
+    <form action="quiz.php">
+        <button class="back-btn">
+            <i class="bi bi-arrow-left-square-fill"></i></a>
+        </button>
+    </form>
 
     <div class="decoration"></div>
     <div class="decoration"></div>
@@ -48,119 +53,119 @@ $session_status = $session['status'];
         <div class="lobby-card">
             <h3 class="fw-bold"><?php echo $quiz['judul'] ?></h3>
             <h1 class="display-3 fw-bold my-4 code-display" id="textToCopy"><?php echo $session['kode_session'] ?></h1>
-            <p class="text-muted">Bagikan kode ini ke orang lain untuk join quiz</p>
+            <sp class="text-muted">Bagikan kode ini ke orang lain untuk join quiz</p>
 
-            <div class="alert alert-info mb-4">
-                Status : <span class="status-badge">
-                    <?php
-                    if ($session_status == 'waiting') {
-                        echo 'Menunggu';
-                    } elseif ($session_status == 'running') {
-                        echo 'Sedang Berlangsung';
-                    } else {
-                        echo 'Selesai';
-                    }
-                    ?>
-                </span>
-            </div>
-
-            <div class="participant-counter">
-
-                👥 Total Peserta : <?php echo $totalPeserta ?>
-            </div>
-
-            <div class="mt-4 text-start mx-auto" style="max-width: 400px;">
-                <h5 class="fw-bold mb-2">📋 Daftar Peserta:</h5>
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Username</th>
-                                <th>Nilai</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $totalPeserta = 0;
-                            while ($p = mysqli_fetch_assoc($peserta)):
-                                $totalPeserta++;
-                            ?>
-                                <tr>
-                                    <td><?php echo htmlspecialchars($p['username']) ?></td>
-                                    <td>
-                                        <?php
-                                        if ($p['nilai'] !== null) {
-                                            echo $p['nilai'];
-                                        } else {
-                                            echo '<span class="text-muted">-</span>';
-                                        }
-                                        ?>
-                                    </td>
-                                </tr>
-                            <?php endwhile; ?>
-
-                            <?php if ($totalPeserta == 0): ?>
-                                <tr>
-                                    <td colspan="2" class="text-center text-muted">
-                                        Belum ada peserta yang join
-                                    </td>
-                                </tr>
-                            <?php endif; ?>
-                        </tbody>
-                    </table>
+                <div class="alert alert-info mb-4">
+                    Status : <span class="status-badge">
+                        <?php
+                        if ($session_status == 'waiting') {
+                            echo 'Menunggu';
+                        } elseif ($session_status == 'running') {
+                            echo 'Sedang Berlangsung';
+                        } else {
+                            echo 'Selesai';
+                        }
+                        ?>
+                    </span>
                 </div>
-            </div>
 
-            <?php if ($is_owner): ?>
-                <?php if ($session_status == 'waiting'): ?>
-                    <a href="mulai_session.php?id_session=<?php echo $id_session ?>" class="btn btn-success btn-lg mt-3">
-                        Mulai Quiz 🚀
-                    </a>
-                <?php elseif ($session_status == 'running'): ?>
-                    <a href="selesai_session.php?id_session=<?php echo $id_session ?>" class="btn btn-danger btn-lg mt-3">
-                        Akhiri Quiz 🏁
-                    </a>
+                <div class="participant-counter">
 
-                    <!-- Tombol Export Excel -->
-                    <a href="export_excel.php?id_session=<?php echo $id_session ?>" class="btn btn-success btn-lg mt-3">
-                        📊 Export Excel
-                    </a>
+                    👥 Total Peserta : <?php echo $totalPeserta ?>
+                </div>
+
+                <div class="mt-4 text-start mx-auto" style="max-width: 400px;">
+                    <h5 class="fw-bold mb-2">📋 Daftar Peserta:</h5>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Nilai</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $totalPeserta = 0;
+                                while ($p = mysqli_fetch_assoc($peserta)):
+                                    $totalPeserta++;
+                                ?>
+                                    <tr>
+                                        <td><?php echo htmlspecialchars($p['username']) ?></td>
+                                        <td>
+                                            <?php
+                                            if ($p['nilai'] !== null) {
+                                                echo $p['nilai'];
+                                            } else {
+                                                echo '<span class="text-muted">-</span>';
+                                            }
+                                            ?>
+                                        </td>
+                                    </tr>
+                                <?php endwhile; ?>
+
+                                <?php if ($totalPeserta == 0): ?>
+                                    <tr>
+                                        <td colspan="2" class="text-center text-muted">
+                                            Belum ada peserta yang join
+                                        </td>
+                                    </tr>
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <?php if ($is_owner): ?>
+                    <?php if ($session_status == 'waiting'): ?>
+                        <a href="mulai_session.php?id_session=<?php echo $id_session ?>" class="btn btn-success btn-lg mt-3">
+                            Mulai Quiz 🚀
+                        </a>
+                    <?php elseif ($session_status == 'running'): ?>
+                        <a href="selesai_session.php?id_session=<?php echo $id_session ?>" class="btn btn-danger btn-lg mt-3">
+                            Akhiri Quiz 🏁
+                        </a>
+
+                        <!-- Tombol Export Excel -->
+                        <a href="export_excel.php?id_session=<?php echo $id_session ?>" class="btn btn-success btn-lg mt-3">
+                            📊 Export Excel
+                        </a>
+
+                    <?php else: ?>
+                        <div class="alert alert-success mt-3">
+                            <h5>Quiz Telah Selesai</h5>
+                            <p>Semua peserta sudah menyelesaikan quiz</p>
+                        </div>
+                    <?php endif; ?>
 
                 <?php else: ?>
-                    <div class="alert alert-success mt-3">
-                        <h5>Quiz Telah Selesai</h5>
-                        <p>Semua peserta sudah menyelesaikan quiz</p>
-                    </div>
-                <?php endif; ?>
-
-            <?php else: ?>
-                <!-- Untuk Peserta -->
-                <?php if ($session_status == 'waiting'): ?>
-                    <div class="alert alert-warning mt-3">
-                        <h5>Menunggu Host Memulai Quiz...</h5>
-                        <p>Silakan tunggu hingga pemilik quiz menekan tombol "Mulai Quiz"</p>
-                    </div>
-                <?php elseif ($session_status == 'running'): ?>
-                    <a href="session_quiz.php?id_session=<?php echo $id_session ?>" class="btn btn-primary btn-lg mt-3">
-                        Kerjakan Quiz Sekarang 🎯
-                    </a>
-                <?php else: ?>
-                    <div class="alert alert-secondary mt-3">
-                        <h5>Quiz Telah Selesai</h5>
-                        <p>Terima kasih telah berpartisipasi!</p>
-                    </div>
-                    <a href="quiz.php" class="btn btn-primary btn-lg mt-3">
-                        Kembali ke Menu Quiz
-                    </a>
-                <?php endif; ?>
+                    <!-- Untuk Peserta -->
+                    <?php if ($session_status == 'waiting'): ?>
+                        <div class="alert alert-warning mt-3">
+                            <h5>Menunggu Host Memulai Quiz...</h5>
+                            <p>Silakan tunggu hingga pemilik quiz menekan tombol "Mulai Quiz"</p>
+                        </div>
+                    <?php elseif ($session_status == 'running'): ?>
+                        <a href="session_quiz.php?id_session=<?php echo $id_session ?>" class="btn btn-primary btn-lg mt-3">
+                            Kerjakan Quiz Sekarang 🎯
+                        </a>
+                    <?php else: ?>
+                        <div class="alert alert-secondary mt-3">
+                            <h5>Quiz Telah Selesai</h5>
+                            <p>Terima kasih telah berpartisipasi!</p>
+                        </div>
+                        <a href="quiz.php" class="btn btn-primary btn-lg mt-3">
+                            Kembali ke Menu Quiz
+                        </a>
+                    <?php endif; ?>
 
 
-                <!-- Tombol Export Excel untuk session selesai
+                    <!-- Tombol Export Excel untuk session selesai
         <a href="export_excel.php?id_session=<?php echo $id_session ?>" class="btn btn-success btn-lg mt-3">
             📊 Download Hasil Excel
         </a> -->
 
-            <?php endif; ?>
+                <?php endif; ?>
         </div>
     </div>
 

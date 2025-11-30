@@ -122,91 +122,55 @@ session_start();
                 <i class="decorative-element deco-2 fas fa-graduation-cap"></i>
 
                 <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center">
-                    <!-- Card 1 -->
-                    <div class="col">
-                        <div class="card h-100 border-0">
-                            <div class="cute-card card-body p-0">
-                                <img class="card-img-top" src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&h=300&q=80" alt="History">
-                                <div class="p-4 text-center">
-                                    <h5 class="card-title">Ilmu Sejarah</h5>
-                                    <p class="card-text">Sejarah, kelas 10 semester 1</p>
-                                    <div class="text-center mt-3"><a class="btn btn-cute" href="note.php">View more <i class="ms-1 fas fa-arrow-right"></i></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                    include "koneksi.php";
+                    $query  = "SELECT * FROM catatan LIMIT 6";
+                    $result = mysqli_query($koneksi, $query);
 
-                    <!-- Card 2 -->
-                    <div class="col">
-                        <div class="card h-100 border-0">
-                            <div class="cute-card card-body p-0">
-                                <img class="card-img-top" src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&h=300&q=80" alt="Mathematics">
-                                <div class="p-4 text-center">
-                                    <h5 class="card-title">Matematika</h5>
-                                    <p class="card-text">Matematika, kelas 10 semester 1</p>
-                                    <div class="text-center mt-3"><a class="btn btn-cute" href="note.php">View more <i class="ms-1 fas fa-arrow-right"></i></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    if ($result && mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            // Ambil file dari kolom 'isi' (pisahkan jika lebih dari 1)
+                            $files = !empty($row['isi']) ? array_map('trim', explode(",", $row['isi'])) : [];
+                            $preview = '';
 
-                    <!-- Card 3 -->
-                    <div class="col">
-                        <div class="card h-100 border-0">
-                            <div class="cute-card card-body p-0">
-                                <img class="card-img-top" src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&h=300&q=80" alt="Science">
-                                <div class="p-4 text-center">
-                                    <h5 class="card-title">Ilmu Pengetahuan Alam</h5>
-                                    <p class="card-text">IPA, kelas 10 semester 1</p>
-                                    <div class="text-center mt-3"><a class="btn btn-cute" href="note.php">View more <i class="ms-1 fas fa-arrow-right"></i></a></div>
+                            if (!empty($files)) {
+                                $firstFile = $files[0];
+                                $ext = strtolower(pathinfo($firstFile, PATHINFO_EXTENSION));
+                                if (in_array($ext, ['jpg', 'jpeg', 'png', 'gif'])) {
+                                    $preview = "<img src='../assets/uploads/" . htmlspecialchars($firstFile) . "' alt='" . htmlspecialchars($row['judul']) . "' class='card-img-top'>";
+                                } else {
+                                    $preview = "<div class='placeholder'><i class='fas fa-file fa-3x'></i></div>";
+                                }
+                            } else {
+                                $preview = "<div class='placeholder'><i class='fas fa-sticky-note fa-3x'></i></div>";
+                            }
+                    ?>
+                            <div class="col">
+                                <div class="card h-100 border-0">
+                                    <div class="cute-card card-body p-0">
+                                        <?= $preview ?>
+                                        <div class="p-4 text-center">
+                                            <h5 class="card-title"><?= htmlspecialchars($row['judul']) ?></h5>
+                                            <p class="card-text"><?= htmlspecialchars($row['deskripsi']) ?></p>
+                                            <div class="text-center mt-3">
+                                                <a class="btn btn-cute" href="detail_note.php?id_note=<?= $row['id_note'] ?>">
+                                                    View more <i class="ms-1 fas fa-arrow-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 4 -->
-                    <div class="col">
-                        <div class="card h-100 border-0">
-                            <div class="cute-card card-body p-0">
-                                <img class="card-img-top" src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&h=300&q=80" alt="Language">
-                                <div class="p-4 text-center">
-                                    <h5 class="card-title">Bahasa Indonesia</h5>
-                                    <p class="card-text">Bahasa, kelas 10 semester 1</p>
-                                    <div class="text-center mt-3"><a class="btn btn-cute" href="note.php">View more <i class="ms-1 fas fa-arrow-right"></i></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 5 -->
-                    <div class="col">
-                        <div class="card h-100 border-0">
-                            <div class="cute-card card-body p-0">
-                                <img class="card-img-top" src="https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&h=300&q=80" alt="Art">
-                                <div class="p-4 text-center">
-                                    <h5 class="card-title">Seni Budaya</h5>
-                                    <p class="card-text">Seni, kelas 10 semester 1</p>
-                                    <div class="text-center mt-3"><a class="btn btn-cute" href="note.php">View more <i class="ms-1 fas fa-arrow-right"></i></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 6 -->
-                    <div class="col">
-                        <div class="card h-100 border-0">
-                            <div class="cute-card card-body p-0">
-                                <img class="card-img-top" src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&h=300&q=80" alt="Programming">
-                                <div class="p-4 text-center">
-                                    <h5 class="card-title">Pemrograman Dasar</h5>
-                                    <p class="card-text">Komputer, kelas 10 semester 2</p>
-                                    <div class="text-center mt-3"><a class="btn btn-cute" href="note.php">View more <i class="ms-1 fas fa-arrow-right"></i></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                        }
+                    } else {
+                        echo '<p class="text-center">Belum ada catatan yang tersedia.</p>';
+                    }
+                    ?>
                 </div>
             </div>
+
+
         </div>
     </section>
 

@@ -19,6 +19,8 @@ $data   = mysqli_fetch_assoc($result);
 
 if (! $data) {
     echo "Note not found!";
+    echo "<script
+    window.location.href='note.php';</script>";
     exit;
 }
 
