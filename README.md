@@ -1,7 +1,7 @@
 # 🎓 E-Learning Cluezy
 
 **E-Learning Cluezy** adalah platform pembelajaran daring yang dikembangkan untuk mempermudah interaksi antara guru dan siswa dalam lingkungan digital.  
-Aplikasi ini menyediakan fitur pengelolaan kursus, tugas, forum diskusi, serta sistem penilaian yang terintegrasi sehingga kegiatan belajar mengajar dapat dilakukan dengan efisien dan menyenangkan.
+Aplikasi ini menyediakan fitur pengelolaan note, quiz, todolist dan pomodoro, serta sistem penilaian yang terintegrasi pada quiz sehingga kegiatan belajar mengajar dapat dilakukan dengan efisien dan menyenangkan.
 
 ---
 
