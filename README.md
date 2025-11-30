@@ -53,7 +53,7 @@ Version Control : GitHub & Git
 ```
 
 4. Import file SQL
-  Import file database.sql (jika tersedia) ke database yang telah dibuat.
+  Import file cluezy_ta.sql ke database yang telah dibuat.
 
 5. Jalankan proyek menggunakan Laragon atau XAMPP
 
